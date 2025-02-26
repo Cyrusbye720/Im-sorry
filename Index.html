@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Heartfelt Apology for my wifey</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+        }
+
+        .main-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .apology-text {
+            font-size: 2em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .floating {
+            position: absolute;
+            animation: float 8s infinite linear;
+            opacity: 0.7;
+            font-size: 1.2em;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        .heart {
+            color: #ff3860;
+            font-size: 1.5em;
+            position: absolute;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        .hidden-message {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        button {
+            background: #ff3860;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-message">
+            <div class="apology-text">
+                <h1>💔 My Dear Chandhana 💔</h1>
+                <p>I'm truly sorry for hurting you...</p>
+                <p>You mean everything to me 🌟</p>
+                <button onclick="showLetter()">Read My Heart's Plea</button>
+            </div>
+        </div>
+
+        <div class="hidden-message" id="letter">
+            <p>My Love,</p>
+            <p>Every moment without your smile feels empty. I promise to...</p>
+            <p>You're my forever ❤️</p>
+            <p>- Satya</p>
+        </div>
+    </div>
+
+    <script>
+        function createFloatingText() {
+            const texts = ['Forgive Me', 'I Love You', 'I Miss You', 'Youre My Everything', 'Im Sorry', '❤️'];
+            const container = document.querySelector('.container');
+            
+            texts.forEach(text => {
+                const elem = document.createElement('div');
+                elem.className = Math.random() > 0.5 ? 'floating' : 'heart';
+                elem.textContent = text;
+                elem.style.left = Math.random() * 95 + '%';
+                elem.style.top = Math.random() * 90 + '%';
+                container.appendChild(elem);
+            });
+        }
+
+        function showLetter() {
+            document.getElementById('letter').style.display = 'block';
+            document.querySelector('button').style.display = 'none';
+        }
+
+        // Create initial floating elements
+        for(let i = 0; i < 30; i++) {
+            createFloatingText();
+        }
+
+        // Interactive background effect
+        document.addEventListener('mousemove', (e) => {
+            document.body.style.background = `linear-gradient(${(e.clientX/window.innerWidth)*45}deg, 
+                #ff9a9e, #fad0c4)`;
+        });
+
+        // Click to create more elements
+        document.addEventListener('click', () => {
+            createFloatingText();
+        });
+    </script>
+</body>
+  </html>
